@@ -4,14 +4,13 @@ project "GLFW"
 	staticruntime "off"
 	warnings "off"
 
-	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	targetdir ("../../Binaries/" .. outputdir .. "/%{prj.name}")
+	objdir ("../../Intermediate/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
 		"include/GLFW/glfw3.h",
 		"include/GLFW/glfw3native.h",
-		"src/glfw_config.h",
 		"src/context.c",
 		"src/init.c",
 		"src/input.c",
@@ -108,11 +107,11 @@ project "GLFW"
 		sanitize { "Address" }
 		flags { "NoRuntimeChecks", "NoIncrementalLink" }
 
-	filter "configurations:Release"
+	filter "configurations:Development"
 		runtime "Release"
 		optimize "speed"
 
-    filter "configurations:Dist"
+    filter "configurations:Shipping"
 		runtime "Release"
 		optimize "speed"
         symbols "off"
